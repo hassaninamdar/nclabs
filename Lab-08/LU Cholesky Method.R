@@ -41,7 +41,7 @@ for (i in 2:(n))
   }
   y[i] = y[i]/l[i,i]
 }
-print(y)
+print(y);
 
 
 ## backward substitution
