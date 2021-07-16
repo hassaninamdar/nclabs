@@ -1,0 +1,30 @@
+require(numDeriv)
+func <- function(x)
+{
+  3*x + sin(x) - exp(x)
+}
+
+## f is the given function
+## x0 is the initial value
+SecantMethod <- function(f,x0,x1)
+{
+  xfinal <- vector()
+  for (i in 1:100)
+  {
+    xfinal[i] <- x1 - ((f(x1)*(x0-x1))/(f(x0)-f(x1)))
+    ea <- abs(xfinal[i]-x1)
+    result <- cbind(iteration = i,final=xfinal[i],error=ea)
+    print(result)
+    if(length(ea)==0)
+    {
+      next
+    }
+    if (ea<=exp(-6))
+    {
+      break
+    }
+    x0 <- x1
+    x1 <- xfinal[i]
+  }
+  
+}
